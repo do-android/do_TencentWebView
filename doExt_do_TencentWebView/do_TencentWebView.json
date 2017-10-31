@@ -1,0 +1,354 @@
+{
+  "ID": "do_TencentWebView",
+  "IsContainer": "0",
+  "Type": "UI",
+  "UIType": "View",
+  "Name": "集成腾讯x5内核的网页视图控件",
+  "Version": "Internal",
+  "Description": "集成了腾讯x5内核,可以加载html网页，拥有强大的视频播放功能",
+  "Icon": "",
+  "BBS": "",
+  "Keyword": "设备功能",
+  "IOS": {
+    "Support": 0,
+    "MinVersion": ""
+  },
+  "Android": {
+    "Support": 0,
+    "MinVersion": ""
+  },
+  "Windows": {
+    "Support": 0,
+    "MinVersion": ""
+  },
+  "WindowsPhone": {
+    "Support": 0,
+    "MinVersion": ""
+  },
+  "Html": {
+    "Support": 1,
+    "MinVersion": "5.0"
+  },
+  "Properties": [
+    {
+      "ID": "bounces",
+      "Name": "反弹效果",
+      "Type": "Bool",
+      "Type_JavaScript": "Bool",
+      "DefaultValue": "wxba6c0c3cf39df3eb",
+      "EditType": "1",
+      "Group": "",
+      "Description": "只支持iOS平台，为false时没有上拉下拉的反弹效果",
+      "Design": {
+        "Type": "Boolean",
+        "Data": []
+      }
+    },
+    {
+      "ID": "c",
+      "Name": "c",
+      "Type": "String",
+      "Type_JavaScript": "String",
+      "DefaultValue": "Text",
+      "EditType": "1",
+      "Group": "",
+      "Description": "wxba6c0c3cf39df3eb   wxba6c0c3cf39df3eb",
+      "Design": {
+        "Type": "Text",
+        "Data": []
+      }
+    },
+    {
+      "ID": "cacheType",
+      "Name": "缓存类型",
+      "Type": "String",
+      "Type_JavaScript": "String",
+      "DefaultValue": "no_cache",
+      "EditType": "1",
+      "Group": "",
+      "Description": "改变WebView的缓存方式，缺省值为no_cache表示不使用缓存；为normal时根据cache-control决定是否获取新数据；windows平台不支持",
+      "Design": {
+        "Type": "List",
+        "Data": [
+          {
+            "id": "no_cache",
+            "value": "不使用缓存"
+          },
+          {
+            "id": "normal",
+            "value": "跟服务器一致"
+          }
+        ]
+      }
+    },
+    {
+      "ID": "isShowLoadingProgress",
+      "Name": "是否显示进度条",
+      "Type": "Bool",
+      "Type_JavaScript": "Bool",
+      "DefaultValue": "false",
+      "EditType": "0",
+      "Group": "",
+      "Description": "webview的顶部有一个绿色进度条，显示加载网页的进度，缺省false不显示",
+      "Design": {
+        "Type": "Boolean",
+        "Data": []
+      }
+    },
+    {
+      "ID": "url",
+      "Name": "网页地址",
+      "Type": "String",
+      "Type_JavaScript": "String",
+      "DefaultValue": "",
+      "EditType": "1",
+      "Group": "",
+      "Description": "支持http://,https://,支持source://,data://文件格式。文件格式的说明可以参考Storage类",
+      "Design": {
+        "Type": "Richtext",
+        "Data": []
+      }
+    },
+    {
+      "ID": "userAgent",
+      "Name": "浏览器标识",
+      "Type": "String",
+      "Type_JavaScript": "String",
+      "DefaultValue": "",
+      "EditType": "1",
+      "Group": "",
+      "Description": "设置浏览器的User-Agent",
+      "Design": {
+        "Type": "Text",
+        "Data": []
+      }
+    },
+    {
+      "ID": "zoom",
+      "Name": "手势缩放",
+      "Type": "Bool",
+      "Type_JavaScript": "Bool",
+      "DefaultValue": "false",
+      "EditType": "0",
+      "Group": "",
+      "Description": "设置webview是否支持手势缩小放大，设置为true时支持",
+      "Design": {
+        "Type": "Boolean",
+        "Data": []
+      }
+    }
+  ],
+  "Events": [
+    {
+      "ID": "failed",
+      "Description": "加载错误事件",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": "加载网页失败或加载一个错误的或者不存在的网页时触发，返回错误信息"
+    },
+    {
+      "ID": "loaded",
+      "Description": "加载结束事件",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": "返回{url}，其中url表示当前操作的url地址，该地址不一定为网络地址，本地html页面跳转也会触发并返回本地路径"
+    },
+    {
+      "ID": "start",
+      "Description": "开始加载",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": "返回{url}，其中url表示当前操作的url地址，该地址不一定为网络地址，本地html页面跳转也会触发并返回本地路径"
+    }
+  ],
+  "syncMethodes": [
+    {
+      "ID": "back",
+      "Name": "回退",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": []
+    },
+    {
+      "ID": "canBack",
+      "Name": "是否可后退",
+      "Description": "",
+      "ReturnType": "Bool",
+      "ReturnType_JavaScript": "Bool",
+      "ReturnDesc": "检查是否有可以后退的历史记录",
+      "Paras": [
+        {
+          "ID": "1",
+          "Name": "1",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "1",
+          "Description": "1"
+        },
+        {
+          "ID": "2",
+          "Name": "2",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "2",
+          "Description": "2"
+        }
+      ]
+    },
+    {
+      "ID": "canForward",
+      "Name": "是否可继续前进",
+      "Description": "",
+      "ReturnType": "Bool",
+      "ReturnType_JavaScript": "Bool",
+      "ReturnDesc": "wxba6c0c3cf39df3eb",
+      "Paras": []
+    },
+    {
+      "ID": "forward",
+      "Name": "前进",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": []
+    },
+    {
+      "ID": "getContentSize",
+      "Name": "获取加载页面内容尺寸",
+      "Description": "获取当前加载页面真实内容的宽高，windows平台不支持",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "返回{width,height}",
+      "Paras": []
+    },
+    {
+      "ID": "reload",
+      "Name": "重新加载",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": []
+    },
+    {
+      "ID": "setCookie",
+      "Name": "设置cookie",
+      "Description": "设置浏览器的cookie",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "url",
+          "Name": "域名地址",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": "如果webview加载该域名地址，会自动把cookie传给服务器"
+        },
+        {
+          "ID": "value",
+          "Name": "cookie值",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": ""
+        }
+      ]
+    },
+    {
+      "ID": "setDefaultEncodingURL",
+      "Name": "设置默认转码",
+      "Description": "设置是否对url默认按照utf-8编码格式转码，仅支持iOS平台",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "isEncode",
+          "Name": "是否默认转码",
+          "Type": "Bool",
+          "Type_JavaScript": "Bool",
+          "Required": 0,
+          "DefaultValue": "true",
+          "Description": "默认按照utf-8编码方式转码，设置为false则不对原url进行处理"
+        }
+      ]
+    },
+    {
+      "ID": "setLoadingProgressColor",
+      "Name": "设置顶部进度条颜色",
+      "Description": "设置加载html页面时，组件顶部进度条的颜色",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "color",
+          "Name": "进度条颜色",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": "颜色值格式为：8位16进制字符，前6位是RGB颜色值，后两位是透明度（Alpha），例如：000000FF"
+        }
+      ]
+    },
+    {
+      "ID": "stop",
+      "Name": "停止刷新",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": []
+    }
+  ],
+  "asyncMethodes": [
+    {
+      "ID": "eval",
+      "Name": "执行JavaScript函数",
+      "Description": "在WebView页面执行一段Javascript代码，并返回值",
+      "ReturnType": "String",
+      "ReturnType_JavaScript": "String",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "code",
+          "Name": "要执行的JS代码",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": ""
+        }
+      ]
+    },
+    {
+      "ID": "loadString",
+      "Name": "加载html字符串",
+      "Description": "",
+      "ReturnType": "",
+      "ReturnType_JavaScript": "",
+      "ReturnDesc": "",
+      "Paras": [
+        {
+          "ID": "text",
+          "Name": "html格式文本字符串",
+          "Type": "String",
+          "Type_JavaScript": "String",
+          "Required": 1,
+          "DefaultValue": "",
+          "Description": ""
+        }
+      ]
+    }
+  ]
+}
