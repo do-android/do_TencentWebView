@@ -44,6 +44,7 @@ import core.object.DoInvokeResult;
 import core.object.DoUIModule;
 import doext.module.do_TencentWebView.define.do_TencentWebView_IMethod;
 
+
 /**
  * 自定义扩展UIView组件实现类，此类必须继承相应VIEW类，并实现DoIUIModuleView,do_TencentWebView_IMethod接口
  * ； #如何调用组件自定义事件？可以通过如下方法触发事件：
@@ -71,29 +72,24 @@ public class do_TencentWebView_View extends RelativeLayout implements DoIUIModul
 		initTbs();
 		webView = new DoCustomTencentWebView(context);
 		WebSettings webSetting = webView.getSettings();
+
 		webSetting.setJavaScriptEnabled(true);
 		webSetting.setJavaScriptCanOpenWindowsAutomatically(true);
-		webSetting.setAllowFileAccess(true);
-		webSetting.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
-		webSetting.setSupportZoom(true);
-		webSetting.setBuiltInZoomControls(true);
-		webSetting.setUseWideViewPort(true);
-		webSetting.setSupportMultipleWindows(true);
 		webSetting.setAppCacheEnabled(true);
 		webSetting.setDomStorageEnabled(true);
-		webSetting.setGeolocationEnabled(true);
-		webSetting.setAppCacheMaxSize(Long.MAX_VALUE);
-		webSetting.setPluginState(WebSettings.PluginState.ON_DEMAND);
 		webSetting.setRenderPriority(WebSettings.RenderPriority.HIGH);
 		webSetting.setCacheMode(WebSettings.LOAD_NO_CACHE);
+		webSetting.setDisplayZoomControls(false);
+		webSetting.setDatabaseEnabled(true);
+		webSetting.setLightTouchEnabled(true);
 
 		// 重新开启一个session会话
 		CookieManager.getInstance().removeSessionCookie();
 
 		String dir = this.ctx.getApplicationContext().getDir("database", Context.MODE_PRIVATE).getPath();
-		webView.getSettings().setDatabasePath(dir);
-		webView.getSettings().setGeolocationEnabled(true); // 启用地理定位
-		webView.getSettings().setGeolocationDatabasePath(dir); // 设置定位的数据库路径
+		webSetting.setDatabasePath(dir);
+		webSetting.setGeolocationEnabled(true); // 启用地理定位
+		webSetting.setGeolocationDatabasePath(dir); // 设置定位的数据库路径
 
 		webView.setDownloadListener(new DownloadListener() {
 			@Override
@@ -106,7 +102,7 @@ public class do_TencentWebView_View extends RelativeLayout implements DoIUIModul
 		});
 
 		webView.setWebViewClient(new WebViewClient() {
-			public void onLoadResource(WebView view, java.lang.String url) {
+			public void onLoadResource(WebView view, String url) {
 				DoServiceContainer.getLogEngine().writeDebug("Load resource=" + url);
 			}
 
@@ -634,13 +630,13 @@ public class do_TencentWebView_View extends RelativeLayout implements DoIUIModul
 	@Override
 	public boolean onInterceptTouchEvent(MotionEvent ev) {
 		switch (ev.getAction()) {
-		case MotionEvent.ACTION_DOWN:
-		case MotionEvent.ACTION_MOVE:
-			getParent().requestDisallowInterceptTouchEvent(true);
-			break;
-		case MotionEvent.ACTION_UP:
-		case MotionEvent.ACTION_CANCEL:
-			break;
+			case MotionEvent.ACTION_DOWN:
+			case MotionEvent.ACTION_MOVE:
+				getParent().requestDisallowInterceptTouchEvent(true);
+				break;
+			case MotionEvent.ACTION_UP:
+			case MotionEvent.ACTION_CANCEL:
+				break;
 		}
 		return false;
 	}
